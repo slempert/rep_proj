@@ -1,0 +1,355 @@
+Sal Lempert
+Psych 254
+3.10.15
+========================================================
+
+Replication project analysis script
+
+```{r import data}
+#source("../helper/useful.R")
+library(dplyr)
+library(ggplot2)
+library(MASS)
+#setwd("~/Documents/Psych254/replication_project")
+#d <- read.csv("254_rep_proj_practice_set_forR.csv")
+d <- read.csv("../data/254_rep_proj_fullx.csv")
+```
+
+
+Clean data:
+re-format?? 
+exclude participants who scored >3 on suspicion and guessed purpose of manipulation
+also exclude participants who failed both article comprehension/attention checks
+
+```{r clean data}
+# assign condition variable
+count = 1;
+for (i in d$Headache){
+  if(is.na(i)){
+    d$cond[count] = 1
+    }
+  else{
+    d$cond[count] = 0
+    }
+  count = count +1;
+}
+
+d.0 = subset(d, cond==0)
+d.1 = subset(d, cond==1)
+d.tidy0 =  dplyr::select(d.0, head_time_3, head_check, nuc_time_3, nuc_check, 53:105)
+d.tidy1 =  dplyr::select(d.1, scan_time_3, scan_check, tms_time_3, tms_check, 53:105)
+d.tidy0 = rename(d.tidy0, read1_time = head_time_3, read1_check = head_check, read2_time = nuc_time_3, read2_check = nuc_check)
+d.tidy1 = rename(d.tidy1, read1_time = scan_time_3, read1_check = scan_check, read2_time = tms_time_3, read2_check = tms_check)
+
+d.tidy = merge(d.tidy0, d.tidy1, all = TRUE)
+d.tidy = rename(d.tidy, blame = blame_1)
+d.tidy = rename(d.tidy, income = Q26)
+d.tidy["exclude"] = 0;
+d.tidy$cond = factor(d.tidy$cond)
+
+#exclusions
+d.tidy$exclude[8] = 1; #failed both comprehension checks, condition =0
+d.tidy$exclude[60] = 1; #suspicion, condition =1
+d.tidy$exclude[45] = 1; #suspicion, condition = 1
+#questionable cases: 65, 63, 62
+
+#cut the excluded participants from sample
+d.tidy = subset(d.tidy, exclude ==0);
+
+
+# create new column for the mean scores on FAD
+d.tidy["fad"] = apply(d.tidy[7:13], 1, FUN = "mean")
+
+# PANAS
+#positive: 1, 3, 5, 9, 10, 12, 14, 16, 17, 19
+#negative: 2, 4, 6, 7, 8, 11, 13, 15, 18, 20
+#create new columns for the mean scores on positive and negative items on PANAS
+#d.tidy["panas_pos"] = apply(d.tidy['panas_1', 'panas_3', 'panas_5','panas_9','panas_10','panas_12','panas_14','panas_16','panas_17','panas_19'], 1, FUN = "mean")
+
+#d.tidy["panas_pos"] = apply(d.tidy[1, 3, 5, 9, 10, 12, 14, 16, 17, 19], 1, FUN = "mean")
+
+d.tidy["panas_pos"] = apply(subset(d.tidy, select = c('panas_1', 'panas_3', 'panas_5','panas_9','panas_10','panas_12','panas_14','panas_16','panas_17','panas_19')), 1, FUN = "mean")
+
+d.tidy["panas_neg"] = apply(subset(d.tidy, select = c('panas_2', 'panas_4', 'panas_6','panas_7','panas_7','panas_11','panas_13','panas_15','panas_18','panas_20')), 1, FUN = "mean")
+
+
+# i can't figure out how to automate a function to exclude based on the comprehension check (they have to have the correct answer on at least one), so i will do this manually, as I believe most people will get the questions right it will be easy to spot the ones who didn't
+
+# for (row in d.tidy)
+#   {
+#   if(is.na(row['read1_check'])){
+#     if(is.na(row['read2 _check'])){
+#       row['exclude'] = 1;
+#     }
+#     else if (row['read2_check'] ==2){
+#       row['exclude'] = 0;
+#     }
+#     else{
+#       row['exclude'] = 1;
+#     }
+#   }
+#   else if(is.na(row['read2_check'])){
+#     if (row['read2_check'] ==2){
+#       row['exclude'] = 0;
+#     }
+#     else{
+#       row['exclude'] = 1;
+#     }
+#   }
+#   else if(row['read1_check'] == 2 || row['read2_check'] ==2){
+#     row['exclude'] = 0;
+#   }
+#   else{
+#     row['exclude'] = 1;
+#   }
+#   }
+#for (row in d.tidy){
+#  print(row['read1_check'])
+#  if ((is.na(row['read1_check']) || row['read1_check']!=2) && (is.na(row['read2_check']) || row['read#2_check']!=2))
+#    {
+#    row['exclude'] = 1;
+#  }
+#  else{ 
+#    row['exclude'] = 0;
+#    }
+#}
+
+#ummm well this part isn't working yet, trying to automate exclusion based on failing both article comprehension checks, but it's bugging out
+```
+
+demographics
+```{r demographic info}
+d.tidy$gender = factor(d.tidy$gender)
+summary(d.tidy$gender) #wow, exactly even?? how'd that happen
+
+summary(d.tidy$age)
+summary(d.tidy$education_1)
+summary(d.tidy$politics_1) #general
+summary(d.tidy$politics_2) #social
+summary(d.tidy$politics_3) #economic
+summary(d.tidy$relig_1)
+```
+
+
+free will beliefs
+```{r test whether articles had desired effect on free will beliefs}
+
+
+#plot this shit
+qplot(fad, data = d.tidy)
+qplot(cond, fad, data = d.tidy, geom = "boxplot")
+
+#test difference
+#t.test(fad~cond, d.tidy)
+
+freewill_cond = with(d.tidy, lm(fad~cond))
+summary(freewill_cond)
+
+#free will beliefs did not differ by condition (bummmmer)
+```
+
+Punishment
+```{r test punishment by condition}
+#plot this shit
+qplot(sentence, data=d.tidy)
+qplot(sentence, fill = cond, position = "dodge", data=d.tidy) #not exactly normal...
+qplot(cond, sentence, data=d.tidy, geom = "boxplot")
+
+#test this shit
+#t.test(sentence~cond, d.tidy)
+
+sentence_cond = with(d.tidy, lm(sentence~cond))
+summary(sentence_cond)
+
+sentence_cond_mood = with(d.tidy, lm(sentence~cond + panas_pos + panas_neg))
+summary(sentence_cond_mood)
+
+m0 = mean(subset(d.tidy, cond==0)$sentence)
+sd0 = sd(subset(d.tidy, cond==0)$sentence)
+m1 = mean(subset(d.tidy, cond==1)$sentence)
+sd1 = sd(subset(d.tidy, cond==1)$sentence)
+#welll, that didn't work, no sig difference by condition
+#Cohen's d = 2t /√(df)
+samp_t = summary(sentence_cond)$coefficients[6] # this is the t value
+samp_df = summary(sentence_cond)$df[2] #this is the df for the model
+coh_d = 2*samp_t/sqrt(samp_df)
+coh_d
+
+#Cohen's d = M1 - M2 / spooled 
+  #  where spooled =√[(s 12+ s 22) / 2]
+coh_d2 = (m1-m0)/sqrt((sd0^2+sd1^2)/2)
+coh_d2
+#aaaand some kind of non-parametric test also?  in the original paper they reported results from a t-test, but the scale is not continuous, so this seems inappropriate. for now, not gonna worry bout it.
+```
+
+```{r punishment with ordinal logistic regression}
+d.tidy$sent_fact = as.factor(d.tidy$sentence)
+ord_sent = polr(sent_fact ~ cond, data = d.tidy)
+
+summary(ord_sent)
+
+#well, still not significant (i think??), soo.
+```
+
+```{r plot new data and original data}
+orig_0 = cbind(3.83, 1.77, 1.77/sqrt(44), 1.96*1.77/sqrt(44)) # mean, sd, estimated se, 95% conf int for control condition in original study
+orig_1 = cbind(3.1, 1.38, 1.38/sqrt(44), 1.96*1.38/sqrt(44)) #mean, sd, estimated se, 95% conf int for manipulation condition in orig study
+#df for t-test in original study = 86.  n=88
+# se = sd/sqrt(n)   but how many in each condition?
+orig = rbind(orig_0, orig_1)
+orig = as.data.frame(orig)
+colnames(orig) = c("mean", "sd", "se", "ci95")
+orig['cond'] = c(0,1)
+
+# when i have my own data, will add after y=mean, fill=**whatever i call that variable that has whether its mine or theirs**
+ggplot(orig, aes(x=cond, y=mean, fill = "Original")) +
+  geom_bar(position=position_dodge(), stat="identity") +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9))
+
+sent_mean_0 = with(subset(d.tidy, cond==0), mean(sentence))
+sent_sd_0 = with(subset(d.tidy, cond==0), sd(sentence))
+cond_count = count(d.tidy, groupby = cond)
+sent_n_0 = cond_count[2]$n[1]
+sent_n_1 = cond_count[2]$n[2]
+sent_mean_1 = with(subset(d.tidy, cond==1), mean(sentence))
+sent_sd_1 = with(subset(d.tidy, cond==1), sd(sentence))
+rep_0 = cbind(sent_mean_0, sent_sd_0, sent_sd_0/sqrt(sent_n_0), 1.96*sent_sd_0/sqrt(sent_n_0)) 
+rep_1 = cbind(sent_mean_1, sent_sd_1, sent_sd_1/sqrt(sent_n_1), 1.96*sent_sd_1/sqrt(sent_n_1))
+rep = rbind(rep_0, rep_1)
+rep = as.data.frame(rep)
+colnames(rep) = c("mean", "sd", "se", "ci95")
+rep['cond'] = c(0,1)
+
+ggplot(rep, aes(x=cond, y=mean, fill = "Replication")) +
+  geom_bar(position=position_dodge(), stat="identity") +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9)) 
+
+both = rbind(orig_0, orig_1, rep_0, rep_1)
+both = as.data.frame(both)
+colnames(both) = c("mean", "sd", "se", "ci95")
+both['cond'] = c(0,1,0,1)
+both$cond = factor(both$cond)
+levels(both$cond) = c("Control", "Neuroscience")
+both['study'] = c("Original","Original","Replication","Replication")
+
+ggplot(both, aes(x=cond, y=mean, fill = study)) +
+  geom_bar(position=position_dodge(), stat="identity") +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9)) + ylab("Mean sentence recommendation") + xlab("Article Condition") + ggtitle("Sentence recommendations\nOriginal vs Replication\n(Error bars represent 95% confidence intervals")
+
+#ok, so the error bars are SD because i can't figure out how to appropriately calculate the SE, don't I need the N for each condition group, not the overall N?
+```
+
+```{r test whether articles had effect on blame}
+
+
+#plot this shit
+qplot(blame, data = d.tidy) #wow super non-normal
+qplot(cond, blame, data = d.tidy, geom = "boxplot")
+qplot(blame, , fill = cond, position = "dodge", data = d.tidy, geom = "bar", binwidth = 0.5)
+
+#try a transformation? square root? reverse square root?  original authors just went ahead with the standard t test, which seems ermmm inadvisable
+#SQRT( (total + 1) - each persons' score) = their reverse square root
+#d.tidy$blame_r = 8-d.tidy$blame
+#d.tidy$blame_r_sqrt = sqrt(d.tidy$blame_r)
+#qplot(blame_r_sqrt, data = d.tidy) #well that didn't help in the slightest
+
+#test diff
+blame_cond = with(d.tidy, lm(blame~cond))
+summary(blame_cond)
+
+blame_cond_mood = with(d.tidy, lm(blame~cond + panas_pos + panas_neg))
+summary(blame_cond_mood)
+
+mb0 = mean(subset(d.tidy, cond==0)$blame)
+sdb0 = sd(subset(d.tidy, cond==0)$blame)
+mb1 = mean(subset(d.tidy, cond==1)$blame)
+sdb1 = sd(subset(d.tidy, cond==1)$blame)
+mb0
+sdb0
+mb1
+sdb1
+
+bcoh_d2 = (mb1-mb0)/sqrt((sdb0^2+sdb1^2)/2)
+bcoh_d2
+#blame beliefs did not differ by condition (bummmmer)
+
+with(d.tidy, cor.test(blame, sentence))
+
+#non-parametric stats
+wilcox.test(blame~cond, data = d.tidy)
+
+```
+
+Mediation by blameworthiness (bootstrap)
+```{r bootstrap function from 252}
+mediation_bootstrap = function(x, med, y, iterations = 1000){
+  
+  # setup some parameters
+  N = length(x)
+  df = as.data.frame(cbind(x, med, y))
+  boot_ab = vector(length=iterations) # set up empty vector for storage
+  
+  # now go through a loop where we'll randomly sample, and get a a*b value
+  for (i in 1:iterations){
+    ind_boot = sample(c(1:N), N, replace=TRUE) # random indices
+    df_boot = df[ind_boot,]
+      
+    iter_a = lm(df_boot$med ~ df_boot$x)$coefficients[2] # coeff of x
+    iter_b = lm(df_boot$y ~ df_boot$med + df_boot$x)$coefficients[2] # coeff of mediator
+    
+    boot_ab[i] = iter_a * iter_b
+  }
+  
+  # create plot
+  hist(boot_ab,main=paste("Bootstrapped a*b, with",iterations,"iterations"),col="red");
+  abline(v=0, col='black', lty=2, lwd=2)
+  abline(v=c(quantile(boot_ab,c(.025,.975))), col='blue', lty=3)
+  
+  # Print results
+  print("Bootstrap results:",quote=F);
+  print(c(ab=mean(boot_ab)));
+  print(quantile(boot_ab,c(.025,.975)))
+  
+  return(boot_ab)
+}
+```
+
+
+```{r test blame as mediator}
+boot_ab = mediation_bootstrap(x=d$cond, med=d$blame, y=d$sentence, iterations=10000)
+
+cond_blame_sent = with(d.tidy, lm(sentence~cond + blame))
+summary(cond_blame_sent)
+summary(sentence_cond)
+summary(blame_cond)
+
+fad_sent = with(d.tidy, lm(sentence~fad))
+summary(fad_sent) #ns. booo.
+
+fad_blame = with(d.tidy, lm(blame~fad))
+summary(fad_blame)  #marginal. this is ridiculous.
+
+fad_blame_sent = with(d.tidy, lm(sentence~fad + blame))
+summary(fad_blame_sent)
+
+#the mediation is not significant
+```
+
+
+Mood
+```{r test mood by condition}
+posmood_cond = with(d.tidy, lm(panas_pos~cond))
+summary(posmood_cond)
+
+negmood_cond = with(d.tidy, lm(panas_neg~cond))
+summary(negmood_cond)
+
+# no significant mood differences by condition
+
+posmood_blame = with(d.tidy, cor.test(panas_pos,blame))
+posmood_blame #significant
+
+negmood_blame = with(d.tidy, cor.test(panas_neg,blame))
+negmood_blame #marginal
+
+```
