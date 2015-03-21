@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>3.10.15</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<p>Sal Lempert
+Psych 254</p>
+
+<h1>3.10.15</h1>
+
+<p>Replication project analysis script</p>
+
+<pre><code class="r">#source(&quot;../helper/useful.R&quot;)
+library(dplyr)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+</code></pre>
+
+<pre><code class="r">library(ggplot2)
+library(MASS)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;
+## 
+## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select
+</code></pre>
+
+<pre><code class="r">#setwd(&quot;~/Documents/Psych254/replication_project&quot;)
+#d &lt;- read.csv(&quot;254_rep_proj_practice_set_forR.csv&quot;)
+d &lt;- read.csv(&quot;../254_rep_proj_fullx.csv&quot;)
+</code></pre>
+
+<p>Clean data:
+re-format?? 
+exclude participants who scored &gt;3 on suspicion and guessed purpose of manipulation
+also exclude participants who failed both article comprehension/attention checks</p>
+
+<pre><code class="r"># assign condition variable
+count = 1;
+for (i in d$Headache){
+  if(is.na(i)){
+    d$cond[count] = 1
+    }
+  else{
+    d$cond[count] = 0
+    }
+  count = count +1;
+}
+
+d.0 = subset(d, cond==0)
+d.1 = subset(d, cond==1)
+d.tidy0 =  dplyr::select(d.0, head_time_3, head_check, nuc_time_3, nuc_check, 53:105)
+d.tidy1 =  dplyr::select(d.1, scan_time_3, scan_check, tms_time_3, tms_check, 53:105)
+d.tidy0 = rename(d.tidy0, read1_time = head_time_3, read1_check = head_check, read2_time = nuc_time_3, read2_check = nuc_check)
+d.tidy1 = rename(d.tidy1, read1_time = scan_time_3, read1_check = scan_check, read2_time = tms_time_3, read2_check = tms_check)
+
+d.tidy = merge(d.tidy0, d.tidy1, all = TRUE)
+d.tidy = rename(d.tidy, blame = blame_1)
+d.tidy = rename(d.tidy, income = Q26)
+d.tidy[&quot;exclude&quot;] = 0;
+d.tidy$cond = factor(d.tidy$cond)
+
+#exclusions
+d.tidy$exclude[8] = 1; #failed both comprehension checks, condition =0
+d.tidy$exclude[60] = 1; #suspicion, condition =1
+d.tidy$exclude[45] = 1; #suspicion, condition = 1
+#questionable cases: 65, 63, 62
+
+#cut the excluded participants from sample
+d.tidy = subset(d.tidy, exclude ==0);
+
+
+# create new column for the mean scores on FAD
+d.tidy[&quot;fad&quot;] = apply(d.tidy[7:13], 1, FUN = &quot;mean&quot;)
+
+# PANAS
+#positive: 1, 3, 5, 9, 10, 12, 14, 16, 17, 19
+#negative: 2, 4, 6, 7, 8, 11, 13, 15, 18, 20
+#create new columns for the mean scores on positive and negative items on PANAS
+#d.tidy[&quot;panas_pos&quot;] = apply(d.tidy[&#39;panas_1&#39;, &#39;panas_3&#39;, &#39;panas_5&#39;,&#39;panas_9&#39;,&#39;panas_10&#39;,&#39;panas_12&#39;,&#39;panas_14&#39;,&#39;panas_16&#39;,&#39;panas_17&#39;,&#39;panas_19&#39;], 1, FUN = &quot;mean&quot;)
+
+#d.tidy[&quot;panas_pos&quot;] = apply(d.tidy[1, 3, 5, 9, 10, 12, 14, 16, 17, 19], 1, FUN = &quot;mean&quot;)
+
+d.tidy[&quot;panas_pos&quot;] = apply(subset(d.tidy, select = c(&#39;panas_1&#39;, &#39;panas_3&#39;, &#39;panas_5&#39;,&#39;panas_9&#39;,&#39;panas_10&#39;,&#39;panas_12&#39;,&#39;panas_14&#39;,&#39;panas_16&#39;,&#39;panas_17&#39;,&#39;panas_19&#39;)), 1, FUN = &quot;mean&quot;)
+
+d.tidy[&quot;panas_neg&quot;] = apply(subset(d.tidy, select = c(&#39;panas_2&#39;, &#39;panas_4&#39;, &#39;panas_6&#39;,&#39;panas_7&#39;,&#39;panas_7&#39;,&#39;panas_11&#39;,&#39;panas_13&#39;,&#39;panas_15&#39;,&#39;panas_18&#39;,&#39;panas_20&#39;)), 1, FUN = &quot;mean&quot;)
+
+
+# i can&#39;t figure out how to automate a function to exclude based on the comprehension check (they have to have the correct answer on at least one), so i will do this manually, as I believe most people will get the questions right it will be easy to spot the ones who didn&#39;t
+
+# for (row in d.tidy)
+#   {
+#   if(is.na(row[&#39;read1_check&#39;])){
+#     if(is.na(row[&#39;read2 _check&#39;])){
+#       row[&#39;exclude&#39;] = 1;
+#     }
+#     else if (row[&#39;read2_check&#39;] ==2){
+#       row[&#39;exclude&#39;] = 0;
+#     }
+#     else{
+#       row[&#39;exclude&#39;] = 1;
+#     }
+#   }
+#   else if(is.na(row[&#39;read2_check&#39;])){
+#     if (row[&#39;read2_check&#39;] ==2){
+#       row[&#39;exclude&#39;] = 0;
+#     }
+#     else{
+#       row[&#39;exclude&#39;] = 1;
+#     }
+#   }
+#   else if(row[&#39;read1_check&#39;] == 2 || row[&#39;read2_check&#39;] ==2){
+#     row[&#39;exclude&#39;] = 0;
+#   }
+#   else{
+#     row[&#39;exclude&#39;] = 1;
+#   }
+#   }
+#for (row in d.tidy){
+#  print(row[&#39;read1_check&#39;])
+#  if ((is.na(row[&#39;read1_check&#39;]) || row[&#39;read1_check&#39;]!=2) &amp;&amp; (is.na(row[&#39;read2_check&#39;]) || row[&#39;read#2_check&#39;]!=2))
+#    {
+#    row[&#39;exclude&#39;] = 1;
+#  }
+#  else{ 
+#    row[&#39;exclude&#39;] = 0;
+#    }
+#}
+
+#ummm well this part isn&#39;t working yet, trying to automate exclusion based on failing both article comprehension checks, but it&#39;s bugging out
+</code></pre>
+
+<p>demographics</p>
+
+<pre><code class="r">d.tidy$gender = factor(d.tidy$gender)
+summary(d.tidy$gender) #wow, exactly even?? how&#39;d that happen
+</code></pre>
+
+<pre><code>##  1  2 
+## 32 32
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$age)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   21.00   26.75   32.00   37.73   47.00   69.00
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$education_1)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   1.000   5.000   6.000   5.794   7.000   9.000       1
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$politics_1) #general
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   3.000   3.406   4.250   7.000
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$politics_2) #social
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.000   3.000   2.984   4.000   7.000
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$politics_3) #economic
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   4.000   3.703   5.000   7.000
+</code></pre>
+
+<pre><code class="r">summary(d.tidy$relig_1)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.000   1.000   1.672   2.000   5.000
+</code></pre>
+
+<p>free will beliefs</p>
+
+<pre><code class="r">#plot this shit
+qplot(fad, data = d.tidy)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="figure/test%20whether%20articles%20had%20desired%20effect%20on%20free%20will%20beliefs-1.png" alt="plot of chunk test whether articles had desired effect on free will beliefs"/> </p>
+
+<pre><code class="r">qplot(cond, fad, data = d.tidy, geom = &quot;boxplot&quot;)
+</code></pre>
+
+<p><img src="figure/test%20whether%20articles%20had%20desired%20effect%20on%20free%20will%20beliefs-2.png" alt="plot of chunk test whether articles had desired effect on free will beliefs"/> </p>
+
+<pre><code class="r">#test difference
+#t.test(fad~cond, d.tidy)
+
+freewill_cond = with(d.tidy, lm(fad~cond))
+summary(freewill_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = fad ~ cond)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.7558 -0.3272  0.1329  0.3074  1.2442 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.75576    0.11860  31.668   &lt;2e-16 ***
+## cond1        0.07974    0.16516   0.483    0.631    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.6603 on 62 degrees of freedom
+## Multiple R-squared:  0.003745,   Adjusted R-squared:  -0.01232 
+## F-statistic: 0.2331 on 1 and 62 DF,  p-value: 0.6309
+</code></pre>
+
+<pre><code class="r">#free will beliefs did not differ by condition (bummmmer)
+</code></pre>
+
+<p>Punishment</p>
+
+<pre><code class="r">#plot this shit
+qplot(sentence, data=d.tidy)
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="figure/test%20punishment%20by%20condition-1.png" alt="plot of chunk test punishment by condition"/> </p>
+
+<pre><code class="r">qplot(sentence, fill = cond, position = &quot;dodge&quot;, data=d.tidy) #not exactly normal...
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="figure/test%20punishment%20by%20condition-2.png" alt="plot of chunk test punishment by condition"/> </p>
+
+<pre><code class="r">qplot(cond, sentence, data=d.tidy, geom = &quot;boxplot&quot;)
+</code></pre>
+
+<p><img src="figure/test%20punishment%20by%20condition-3.png" alt="plot of chunk test punishment by condition"/> </p>
+
+<pre><code class="r">#test this shit
+#t.test(sentence~cond, d.tidy)
+
+sentence_cond = with(d.tidy, lm(sentence~cond))
+summary(sentence_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ cond)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -2.355 -1.355 -0.238  1.645  3.879 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   3.3548     0.3279  10.232  6.1e-15 ***
+## cond1        -0.2336     0.4566  -0.512    0.611    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.826 on 62 degrees of freedom
+## Multiple R-squared:  0.004205,   Adjusted R-squared:  -0.01186 
+## F-statistic: 0.2618 on 1 and 62 DF,  p-value: 0.6107
+</code></pre>
+
+<pre><code class="r">sentence_cond_mood = with(d.tidy, lm(sentence~cond + panas_pos + panas_neg))
+summary(sentence_cond_mood)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ cond + panas_pos + panas_neg)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.2688 -1.3625 -0.1719  1.5013  3.9318 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  2.83574    1.09073   2.600   0.0117 *
+## cond1       -0.16161    0.47043  -0.344   0.7324  
+## panas_pos   -0.06098    0.28014  -0.218   0.8284  
+## panas_neg    0.51605    0.50277   1.026   0.3088  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.839 on 60 degrees of freedom
+## Multiple R-squared:  0.022,  Adjusted R-squared:  -0.0269 
+## F-statistic: 0.4499 on 3 and 60 DF,  p-value: 0.7183
+</code></pre>
+
+<pre><code class="r">m0 = mean(subset(d.tidy, cond==0)$sentence)
+sd0 = sd(subset(d.tidy, cond==0)$sentence)
+m1 = mean(subset(d.tidy, cond==1)$sentence)
+sd1 = sd(subset(d.tidy, cond==1)$sentence)
+#welll, that didn&#39;t work, no sig difference by condition
+#Cohen&#39;s d = 2t /√(df)
+samp_t = summary(sentence_cond)$coefficients[6] # this is the t value
+samp_df = summary(sentence_cond)$df[2] #this is the df for the model
+coh_d = 2*samp_t/sqrt(samp_df)
+coh_d
+</code></pre>
+
+<pre><code>## [1] -0.1299638
+</code></pre>
+
+<pre><code class="r">#Cohen&#39;s d = M1 - M2 / spooled 
+  #  where spooled =√[(s 12+ s 22) / 2]
+coh_d2 = (m1-m0)/sqrt((sd0^2+sd1^2)/2)
+coh_d2
+</code></pre>
+
+<pre><code>## [1] -0.1278771
+</code></pre>
+
+<pre><code class="r">#aaaand some kind of non-parametric test also?  in the original paper they reported results from a t-test, but the scale is not continuous, so this seems inappropriate. for now, not gonna worry bout it.
+</code></pre>
+
+<pre><code class="r">d.tidy$sent_fact = as.factor(d.tidy$sentence)
+ord_sent = polr(sent_fact ~ cond, data = d.tidy)
+
+summary(ord_sent)
+</code></pre>
+
+<pre><code>## 
+## Re-fitting to get Hessian
+</code></pre>
+
+<pre><code>## Call:
+## polr(formula = sent_fact ~ cond, data = d.tidy)
+## 
+## Coefficients:
+##         Value Std. Error t value
+## cond1 -0.2017     0.4426 -0.4558
+## 
+## Intercepts:
+##     Value   Std. Error t value
+## 1|2 -1.3829  0.3882    -3.5625
+## 2|3 -0.4865  0.3469    -1.4026
+## 3|4  0.2779  0.3379     0.8227
+## 4|5  0.7616  0.3507     2.1716
+## 5|7  2.3672  0.5144     4.6022
+## 
+## Residual Deviance: 221.7292 
+## AIC: 233.7292
+</code></pre>
+
+<pre><code class="r">#well, still not significant (i think??), soo.
+</code></pre>
+
+<pre><code class="r">orig_0 = cbind(3.83, 1.77, 1.77/sqrt(44), 1.96*1.77/sqrt(44)) # mean, sd, estimated se, 95% conf int for control condition in original study
+orig_1 = cbind(3.1, 1.38, 1.38/sqrt(44), 1.96*1.38/sqrt(44)) #mean, sd, estimated se, 95% conf int for manipulation condition in orig study
+#df for t-test in original study = 86.  n=88
+# se = sd/sqrt(n)   but how many in each condition?
+orig = rbind(orig_0, orig_1)
+orig = as.data.frame(orig)
+colnames(orig) = c(&quot;mean&quot;, &quot;sd&quot;, &quot;se&quot;, &quot;ci95&quot;)
+orig[&#39;cond&#39;] = c(0,1)
+
+# when i have my own data, will add after y=mean, fill=**whatever i call that variable that has whether its mine or theirs**
+ggplot(orig, aes(x=cond, y=mean, fill = &quot;Original&quot;)) +
+  geom_bar(position=position_dodge(), stat=&quot;identity&quot;) +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9))
+</code></pre>
+
+<p><img src="figure/plot%20new%20data%20and%20original%20data-1.png" alt="plot of chunk plot new data and original data"/> </p>
+
+<pre><code class="r">sent_mean_0 = with(subset(d.tidy, cond==0), mean(sentence))
+sent_sd_0 = with(subset(d.tidy, cond==0), sd(sentence))
+cond_count = count(d.tidy, groupby = cond)
+sent_n_0 = cond_count[2]$n[1]
+sent_n_1 = cond_count[2]$n[2]
+sent_mean_1 = with(subset(d.tidy, cond==1), mean(sentence))
+sent_sd_1 = with(subset(d.tidy, cond==1), sd(sentence))
+rep_0 = cbind(sent_mean_0, sent_sd_0, sent_sd_0/sqrt(sent_n_0), 1.96*sent_sd_0/sqrt(sent_n_0)) 
+rep_1 = cbind(sent_mean_1, sent_sd_1, sent_sd_1/sqrt(sent_n_1), 1.96*sent_sd_1/sqrt(sent_n_1))
+rep = rbind(rep_0, rep_1)
+rep = as.data.frame(rep)
+colnames(rep) = c(&quot;mean&quot;, &quot;sd&quot;, &quot;se&quot;, &quot;ci95&quot;)
+rep[&#39;cond&#39;] = c(0,1)
+
+ggplot(rep, aes(x=cond, y=mean, fill = &quot;Replication&quot;)) +
+  geom_bar(position=position_dodge(), stat=&quot;identity&quot;) +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9)) 
+</code></pre>
+
+<p><img src="figure/plot%20new%20data%20and%20original%20data-2.png" alt="plot of chunk plot new data and original data"/> </p>
+
+<pre><code class="r">both = rbind(orig_0, orig_1, rep_0, rep_1)
+both = as.data.frame(both)
+colnames(both) = c(&quot;mean&quot;, &quot;sd&quot;, &quot;se&quot;, &quot;ci95&quot;)
+both[&#39;cond&#39;] = c(0,1,0,1)
+both$cond = factor(both$cond)
+levels(both$cond) = c(&quot;Control&quot;, &quot;Neuroscience&quot;)
+both[&#39;study&#39;] = c(&quot;Original&quot;,&quot;Original&quot;,&quot;Replication&quot;,&quot;Replication&quot;)
+
+ggplot(both, aes(x=cond, y=mean, fill = study)) +
+  geom_bar(position=position_dodge(), stat=&quot;identity&quot;) +
+  geom_errorbar(aes(ymin = mean-ci95, ymax = mean+ci95), width = .2, position=position_dodge(.9)) + ylab(&quot;Mean sentence recommendation&quot;) + xlab(&quot;Article Condition&quot;) + ggtitle(&quot;Sentence recommendations\nOriginal vs Replication\n(Error bars represent 95% confidence intervals&quot;)
+</code></pre>
+
+<p><img src="figure/plot%20new%20data%20and%20original%20data-3.png" alt="plot of chunk plot new data and original data"/> </p>
+
+<pre><code class="r">#ok, so the error bars are SD because i can&#39;t figure out how to appropriately calculate the SE, don&#39;t I need the N for each condition group, not the overall N?
+</code></pre>
+
+<pre><code class="r">#plot this shit
+qplot(blame, data = d.tidy) #wow super non-normal
+</code></pre>
+
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
+</code></pre>
+
+<p><img src="figure/test%20whether%20articles%20had%20effect%20on%20blame-1.png" alt="plot of chunk test whether articles had effect on blame"/> </p>
+
+<pre><code class="r">qplot(cond, blame, data = d.tidy, geom = &quot;boxplot&quot;)
+</code></pre>
+
+<p><img src="figure/test%20whether%20articles%20had%20effect%20on%20blame-2.png" alt="plot of chunk test whether articles had effect on blame"/> </p>
+
+<pre><code class="r">qplot(blame, , fill = cond, position = &quot;dodge&quot;, data = d.tidy, geom = &quot;bar&quot;, binwidth = 0.5)
+</code></pre>
+
+<p><img src="figure/test%20whether%20articles%20had%20effect%20on%20blame-3.png" alt="plot of chunk test whether articles had effect on blame"/> </p>
+
+<pre><code class="r">#try a transformation? square root? reverse square root?  original authors just went ahead with the standard t test, which seems ermmm inadvisable
+#SQRT( (total + 1) - each persons&#39; score) = their reverse square root
+#d.tidy$blame_r = 8-d.tidy$blame
+#d.tidy$blame_r_sqrt = sqrt(d.tidy$blame_r)
+#qplot(blame_r_sqrt, data = d.tidy) #well that didn&#39;t help in the slightest
+
+#test diff
+blame_cond = with(d.tidy, lm(blame~cond))
+summary(blame_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = blame ~ cond)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.8710 -0.8710  0.1290  0.9394  1.1290 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   5.8710     0.2227  26.357   &lt;2e-16 ***
+## cond1         0.1896     0.3102   0.611    0.543    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.24 on 62 degrees of freedom
+## Multiple R-squared:  0.005992,   Adjusted R-squared:  -0.01004 
+## F-statistic: 0.3737 on 1 and 62 DF,  p-value: 0.5432
+</code></pre>
+
+<pre><code class="r">blame_cond_mood = with(d.tidy, lm(blame~cond + panas_pos + panas_neg))
+summary(blame_cond_mood)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = blame ~ cond + panas_pos + panas_neg)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2742 -0.8424  0.3786  0.7938  2.0277 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  7.72907    0.70408  10.978 5.56e-16 ***
+## cond1        0.01921    0.30367   0.063   0.9498    
+## panas_pos   -0.37463    0.18084  -2.072   0.0426 *  
+## panas_neg   -0.58175    0.32454  -1.793   0.0781 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.187 on 60 degrees of freedom
+## Multiple R-squared:  0.1187, Adjusted R-squared:  0.07459 
+## F-statistic: 2.693 on 3 and 60 DF,  p-value: 0.05405
+</code></pre>
+
+<pre><code class="r">mb0 = mean(subset(d.tidy, cond==0)$blame)
+sdb0 = sd(subset(d.tidy, cond==0)$blame)
+mb1 = mean(subset(d.tidy, cond==1)$blame)
+sdb1 = sd(subset(d.tidy, cond==1)$blame)
+mb0
+</code></pre>
+
+<pre><code>## [1] 5.870968
+</code></pre>
+
+<pre><code class="r">sdb0
+</code></pre>
+
+<pre><code>## [1] 1.284314
+</code></pre>
+
+<pre><code class="r">mb1
+</code></pre>
+
+<pre><code>## [1] 6.060606
+</code></pre>
+
+<pre><code class="r">sdb1
+</code></pre>
+
+<pre><code>## [1] 1.197377
+</code></pre>
+
+<pre><code class="r">bcoh_d2 = (mb1-mb0)/sqrt((sdb0^2+sdb1^2)/2)
+bcoh_d2
+</code></pre>
+
+<pre><code>## [1] 0.1527362
+</code></pre>
+
+<pre><code class="r">#blame beliefs did not differ by condition (bummmmer)
+
+with(d.tidy, cor.test(blame, sentence))
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  blame and sentence
+## t = 3.5118, df = 62, p-value = 0.0008362
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.1794908 0.5936941
+## sample estimates:
+##       cor 
+## 0.4073286
+</code></pre>
+
+<pre><code class="r">#non-parametric stats
+wilcox.test(blame~cond, data = d.tidy)
+</code></pre>
+
+<pre><code>## Warning in wilcox.test.default(x = c(4L, 7L, 7L, 7L, 6L, 7L, 5L, 7L, 6L, :
+## cannot compute exact p-value with ties
+</code></pre>
+
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  blame by cond
+## W = 467, p-value = 0.5298
+## alternative hypothesis: true location shift is not equal to 0
+</code></pre>
+
+<p>Mediation by blameworthiness (bootstrap)</p>
+
+<pre><code class="r">mediation_bootstrap = function(x, med, y, iterations = 1000){
+
+  # setup some parameters
+  N = length(x)
+  df = as.data.frame(cbind(x, med, y))
+  boot_ab = vector(length=iterations) # set up empty vector for storage
+
+  # now go through a loop where we&#39;ll randomly sample, and get a a*b value
+  for (i in 1:iterations){
+    ind_boot = sample(c(1:N), N, replace=TRUE) # random indices
+    df_boot = df[ind_boot,]
+
+    iter_a = lm(df_boot$med ~ df_boot$x)$coefficients[2] # coeff of x
+    iter_b = lm(df_boot$y ~ df_boot$med + df_boot$x)$coefficients[2] # coeff of mediator
+
+    boot_ab[i] = iter_a * iter_b
+  }
+
+  # create plot
+  hist(boot_ab,main=paste(&quot;Bootstrapped a*b, with&quot;,iterations,&quot;iterations&quot;),col=&quot;red&quot;);
+  abline(v=0, col=&#39;black&#39;, lty=2, lwd=2)
+  abline(v=c(quantile(boot_ab,c(.025,.975))), col=&#39;blue&#39;, lty=3)
+
+  # Print results
+  print(&quot;Bootstrap results:&quot;,quote=F);
+  print(c(ab=mean(boot_ab)));
+  print(quantile(boot_ab,c(.025,.975)))
+
+  return(boot_ab)
+}
+</code></pre>
+
+<pre><code class="r">boot_ab = mediation_bootstrap(x=d$cond, med=d$blame, y=d$sentence, iterations=10000)
+</code></pre>
+
+<p><img src="figure/test%20blame%20as%20mediator-1.png" alt="plot of chunk test blame as mediator"/> </p>
+
+<pre><code>## [1] Bootstrap results:
+##        ab 
+## 0.2056466 
+##       2.5%      97.5% 
+## -0.1620639  0.6292164
+</code></pre>
+
+<pre><code class="r">cond_blame_sent = with(d.tidy, lm(sentence~cond + blame))
+summary(cond_blame_sent)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ cond + blame)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.0436 -1.2134 -0.1488  1.2088  3.3057 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -0.2268     1.0509  -0.216 0.829853    
+## cond1        -0.3493     0.4202  -0.831 0.409026    
+## blame         0.6101     0.1715   3.557 0.000733 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.675 on 61 degrees of freedom
+## Multiple R-squared:  0.1753, Adjusted R-squared:  0.1482 
+## F-statistic: 6.481 on 2 and 61 DF,  p-value: 0.002803
+</code></pre>
+
+<pre><code class="r">summary(sentence_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ cond)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -2.355 -1.355 -0.238  1.645  3.879 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   3.3548     0.3279  10.232  6.1e-15 ***
+## cond1        -0.2336     0.4566  -0.512    0.611    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.826 on 62 degrees of freedom
+## Multiple R-squared:  0.004205,   Adjusted R-squared:  -0.01186 
+## F-statistic: 0.2618 on 1 and 62 DF,  p-value: 0.6107
+</code></pre>
+
+<pre><code class="r">summary(blame_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = blame ~ cond)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.8710 -0.8710  0.1290  0.9394  1.1290 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   5.8710     0.2227  26.357   &lt;2e-16 ***
+## cond1         0.1896     0.3102   0.611    0.543    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.24 on 62 degrees of freedom
+## Multiple R-squared:  0.005992,   Adjusted R-squared:  -0.01004 
+## F-statistic: 0.3737 on 1 and 62 DF,  p-value: 0.5432
+</code></pre>
+
+<pre><code class="r">fad_sent = with(d.tidy, lm(sentence~fad))
+summary(fad_sent) #ns. booo.
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ fad)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.6102 -1.3424 -0.2532  1.5349  3.7022 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   2.0484     1.3442   1.524    0.133
+## fad           0.3123     0.3489   0.895    0.374
+## 
+## Residual standard error: 1.818 on 62 degrees of freedom
+## Multiple R-squared:  0.01276,    Adjusted R-squared:  -0.003164 
+## F-statistic: 0.8013 on 1 and 62 DF,  p-value: 0.3742
+</code></pre>
+
+<pre><code class="r">fad_blame = with(d.tidy, lm(blame~fad))
+summary(fad_blame)  #marginal. this is ridiculous.
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = blame ~ fad)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.4448 -0.6534  0.1487  0.9509  1.4031 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   4.4664     0.8993   4.966 5.65e-06 ***
+## fad           0.3957     0.2335   1.695   0.0951 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.216 on 62 degrees of freedom
+## Multiple R-squared:  0.04428,    Adjusted R-squared:  0.02887 
+## F-statistic: 2.873 on 1 and 62 DF,  p-value: 0.09512
+</code></pre>
+
+<pre><code class="r">fad_blame_sent = with(d.tidy, lm(sentence~fad + blame))
+summary(fad_blame_sent)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = sentence ~ fad + blame)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.8928 -1.2688 -0.2069  1.1494  3.1410 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) -0.58765    1.47202  -0.399  0.69113   
+## fad          0.07882    0.33060   0.238  0.81237   
+## blame        0.59020    0.17582   3.357  0.00136 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.684 on 61 degrees of freedom
+## Multiple R-squared:  0.1667, Adjusted R-squared:  0.1394 
+## F-statistic: 6.101 on 2 and 61 DF,  p-value: 0.003842
+</code></pre>
+
+<pre><code class="r">#the mediation is not significant
+</code></pre>
+
+<p>Mood</p>
+
+<pre><code class="r">posmood_cond = with(d.tidy, lm(panas_pos~cond))
+summary(posmood_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = panas_pos ~ cond)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.36970 -0.56970 -0.07033  0.52935  2.12903 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   2.8710     0.1498  19.169   &lt;2e-16 ***
+## cond1        -0.2013     0.2086  -0.965    0.338    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8339 on 62 degrees of freedom
+## Multiple R-squared:  0.0148, Adjusted R-squared:  -0.001094 
+## F-statistic: 0.9312 on 1 and 62 DF,  p-value: 0.3383
+</code></pre>
+
+<pre><code class="r">negmood_cond = with(d.tidy, lm(panas_neg~cond))
+summary(negmood_cond)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = panas_neg ~ cond)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.34516 -0.24516 -0.18182  0.01818  1.81818 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1.34516    0.08345  16.119   &lt;2e-16 ***
+## cond1       -0.16334    0.11622  -1.405    0.165    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4647 on 62 degrees of freedom
+## Multiple R-squared:  0.03088,    Adjusted R-squared:  0.01525 
+## F-statistic: 1.975 on 1 and 62 DF,  p-value: 0.1649
+</code></pre>
+
+<pre><code class="r"># no significant mood differences by condition
+
+posmood_blame = with(d.tidy, cor.test(panas_pos,blame))
+posmood_blame #significant
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  panas_pos and blame
+## t = -2.1498, df = 62, p-value = 0.03548
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.47822876 -0.01878774
+## sample estimates:
+##        cor 
+## -0.2633807
+</code></pre>
+
+<pre><code class="r">negmood_blame = with(d.tidy, cor.test(panas_neg,blame))
+negmood_blame #marginal
+</code></pre>
+
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  panas_neg and blame
+## t = -1.8857, df = 62, p-value = 0.06402
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.45278875  0.01369182
+## sample estimates:
+##        cor 
+## -0.2329013
+</code></pre>
+
+</body>
+
+</html>
+
